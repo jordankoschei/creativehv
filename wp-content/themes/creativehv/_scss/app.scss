@@ -1,3 +1,8 @@
-body {
-	background: red;
-}
+@import 'generic/normalize';
+@import 'generic/media';
+@import 'generic/fonts';
+
+@import 'vars';
+@import 'base';
+
+@import 'components/header';
