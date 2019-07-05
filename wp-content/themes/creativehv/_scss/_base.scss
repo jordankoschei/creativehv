@@ -8,7 +8,7 @@ html {
 
   background-color: $lightestGray;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
 }
 
@@ -25,4 +25,24 @@ body {
 
 .flex {
   display: flex;
+}
+
+h1, h2, h3 {
+  font-family: 'Zilla', Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+
+a {
+  color: $primary;
+}
+
+@include media('>=md') {
+  html {
+    font-size: 17px;
+  }
+}
+
+@include media('>=lg') {
+  html {
+    font-size: 18px;
+  }
 }
