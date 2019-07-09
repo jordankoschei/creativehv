@@ -1,34 +1,38 @@
 <?php get_header(); ?>
 
+<?php if (get_field('notice_active', 'option')) : ?>
+<div class="inner">
+  <div class="notice">
+    <?php the_field('notice_text', 'option'); ?> <a href="<?php the_field('notice_cta_url', 'option'); ?>" class="notice-cta"><?php the_field('notice_cta_text', 'option'); ?></a>
+  </div>
+</div>
+<?php endif; ?>
+
 <?php
 $sticky = get_option( 'sticky_posts' );
+if ( ! $sticky) {
+  $sticky = get_posts("numberposts=1&fields=ids");
+}
 $query = new WP_Query( 'p=' . $sticky[0] );
 
-while ( $query->have_posts() ) : $query->the_post();
+while ( $query->have_posts() ) {
+  $query->the_post();
+  get_template_part('includes/hero');
+}
 ?>
 
-  <article class="hero inner">
-    <div class="hero-hover">
-      <a href="<?php the_permalink(); ?>" class="hero-img-link">
-        <?php the_post_thumbnail(); ?>
-      </a>
+<div class="inner posts">
+  <?php
+    $args = array( 'post__not_in' => array($sticky[0]) );
+    $query = new WP_Query( $args );
 
-      <a href="<?php the_permalink(); ?>" class="hero-text">
-        <h1><?php the_title(); ?></h1>
-        <div>
-          <div class="hero-text-description">
-            <div>
-              <p><?php the_field('description'); ?></p>
-            </div>
-          </div>
-          <div class="hero-cta">
-            <span>Read the interview</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </article>
+    while ( $query->have_posts() ) {
+      $query->the_post();
+      get_template_part('includes/post-card');
+    }
+    ?>
+</div>
 
-<?php endwhile; ?>
+<?php get_template_part('includes/subscribe'); ?>
 
 <?php get_footer(); ?>

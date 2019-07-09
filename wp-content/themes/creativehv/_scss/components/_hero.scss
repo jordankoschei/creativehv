@@ -1,19 +1,28 @@
 .hero {
+  backface-visibility: hidden;
   display: block;
+  margin-bottom: 2rem;
   position: relative;
+  transition: transform $transition;
 
   img {
     height: auto;
     width: 100%;
   }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.01);
+  }
 }
 
 .hero-text {
   color: $black;
+  display: inline-block;
   text-decoration: none;
-  padding-right: 1rem;
   position: relative;
   left: .5rem;
+  margin-right: .5rem;
   top: -1rem;
 
   h1,
@@ -25,6 +34,7 @@
   }
 
   h1 {
+    box-shadow: 0 1px 0 $lightGray;
     display: inline-block;
     font-size: 1.5rem;
     margin: 0 0 .5rem;
@@ -32,6 +42,7 @@
   }
 
   p {
+    box-shadow: 0 1px 0 $lightGray;
     display: inline;
     line-height: 1.8;
   }
@@ -41,6 +52,7 @@
   margin-top: 1rem;
 
   span {
+    box-shadow: 0 1px 0 $lightGray;
     color: $primary;
     line-height: 1;
     text-decoration: none;
@@ -64,6 +76,13 @@
 
 @include media('>=md') {
   .hero {
+    transition: none;
+
+    &:hover,
+    &:focus {
+      transform: none;
+    }
+
     img {
       transition: transform $transition;
       width: 70%;
@@ -83,6 +102,7 @@
     bottom: 2rem;
     top: auto;
     left: auto;
+    margin-right: auto;
     padding-right: 0;
     position: absolute;
     right: 0;
@@ -142,6 +162,10 @@
 }
 
 @include media('>=lg') {
+  .hero {
+    margin-bottom: 4.5rem;
+  }
+
   .hero-text {
     h1 {
       font-size: 2rem;
