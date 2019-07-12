@@ -43,6 +43,6 @@
       <?php endif; ?>
     </a>
 
-    <?php wp_nav_menu(array('menu' => 'header', 'container' => 'nav')); ?>
+    <?php wp_nav_menu(array('menu' => 'Header Menu', 'container' => 'nav')); ?>
   </div>
 </header>

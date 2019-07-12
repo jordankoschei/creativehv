@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+<?php the_post(); ?>
+
 <div class="simple">
   <div class="inner">
     <h1 class="simple-title"><?php the_title(); ?></h1>

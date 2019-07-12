@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+<?php the_post(); ?>
+
 <article class="post">
   <div class="inner">
     <div class="post-hero">
